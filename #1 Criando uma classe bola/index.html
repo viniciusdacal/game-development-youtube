@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ball</title>
+	<script src="javascript/Ball.js"></script>
+
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById("game");
+			var context = canvas.getContext("2d");
+			
+
+			var b1 = new Ball(context);
+			
+			function animation(){
+				context.clearRect(0,0, context.canvas.width, context.canvas.height);
+				b1.update();
+				b1.draw();
+
+				requestAnimationFrame(function(){
+					animation();
+				});
+			}
+			
+			animation();
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="game" width="500" height="500"></canvas>
+</body>
+</html>
