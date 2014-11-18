@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Colisão</title>
+	<script src="javascript/Animation.js"></script>
+	<script src="javascript/Collider.js"></script>
+	<script src="javascript/Ball.js"></script>
+
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById("game");
+			var context = canvas.getContext("2d");
+			var animation = new Animation(context);
+			var collider = new Collider();
+
+
+			var b1 = new Ball(context);
+			var b2 = new Ball(context);
+
+			b2.x = 15;
+			b2.speedX = 15;
+
+		
+			animation.newSprite(b1);
+			animation.newSprite(b2);
+			
+			collider.newSprite(b1);
+			collider.newSprite(b2);
+
+			animation.newTask(collider);
+
+			animation.play();
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="game" width="500" height="500"></canvas>
+</body>
+</html>
